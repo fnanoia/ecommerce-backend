@@ -12,8 +12,7 @@ export class productsServices {
       const data = await fs.promises.readFile(this.fileDir, "utf-8");
       //parseo json para trabajar con array
       const parsedData = JSON.parse(data);
-      //console.log(parsedData.products);
-
+      
       //obtengo el id del ultimo elemento del array
       const dataIndex = parsedData.products.length;
       const newId = parsedData.products[dataIndex - 1].id;
