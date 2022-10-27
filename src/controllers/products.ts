@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import { products } from "../services/services";
+import { Products } from "../services/services";
 
 export const getProducts = async (_req: Request, res: Response) => {
   try {
-    const prod = await products.getAll();
+    const prod = await Products.getAll();
 
     return res.send(prod);
   } catch (error) {
@@ -14,7 +14,7 @@ export const getProducts = async (_req: Request, res: Response) => {
 export const getProductById = async (req: Request, res: Response) => {
   try {
     const id = JSON.parse(req.params.id);
-    const prod = await products.getById(id);
+    const prod = await Products.getById(id);
     if (!prod) return res.status(400).send("Product not found");
 
     return res.send(prod);
@@ -25,16 +25,19 @@ export const getProductById = async (req: Request, res: Response) => {
 
 export const saveProduct = async (req: Request, res: Response) => {
   try {
-    const { name, price, url } = req.body;
-    if (!name || !price || !url) return res.status(400).send("Empty fields");
+    const { name, price, url, description, code, stock} = req.body;
+    if (!name || !price || !url || !description || !code || !stock ) return res.status(400).send("Empty fields");
 
     const newProduct = {
       name,
       price,
       url,
+      description,
+      code,
+      stock
     };
 
-    await products.save(newProduct);
+    await Products.save(newProduct);
 
     return res.status(200).send("Product saved successfully");
   } catch (error) {
@@ -45,7 +48,7 @@ export const saveProduct = async (req: Request, res: Response) => {
 export const updateProductById = async (req: Request, res: Response) => {
   try {
     const id = JSON.parse(req.params.id);
-    const prod = await products.getById(id);
+    const prod = await Products.getById(id);
     if (!prod) return res.status(400).send("Product not found");
         
     const { name, price, url } = req.body;
@@ -57,7 +60,7 @@ export const updateProductById = async (req: Request, res: Response) => {
       url: url || prod.url,
     };
 
-    await products.updateById(id, updateProduct);
+    await Products.updateById(id, updateProduct);
 
     return res.status(200).send("Product updated successfully");
   } catch (error) {
@@ -68,10 +71,10 @@ export const updateProductById = async (req: Request, res: Response) => {
 export const deleteProductById = async (req: Request, res: Response) => {
   try {
     const id = JSON.parse(req.params.id);
-    const prod = await products.getById(id);
+    const prod = await Products.getById(id);
     if (!prod) return res.status(400).send("Product not found");
     
-    await products.deleteById(id)
+    await Products.deleteById(id)
 
     return res.status(200).send("Product deleted successfully");
   } catch (error) {

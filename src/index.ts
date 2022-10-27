@@ -1,4 +1,4 @@
-import express, {Application, Request, Response} from "express";
+import express, {Application, Request, Response } from "express";
 
 //init app. define port
 const app: Application = express();
@@ -7,6 +7,7 @@ const port: number = 3000;
 //middlewares
 app.use(express.json());
 
+
 //test route
 app.get("/", (_req: Request, res: Response) =>{
     res.send("hello ts");
@@ -14,8 +15,9 @@ app.get("/", (_req: Request, res: Response) =>{
 
 //routers
 import productsRouter from "./routes/products";
-import cartRouter from "./routes/products";
 app.use("/api/products", productsRouter);
+
+import cartRouter from "./routes/cart";
 app.use("/api/cart", cartRouter);
 
 //server listener

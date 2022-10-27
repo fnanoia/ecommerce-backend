@@ -2,21 +2,23 @@
   "products": [
     {
       "id": 1,
+      "timestamp_prod": 1666882847030,
       "name": "Mouse",
       "price": "200",
-      "url": "https://cdn-icons-png.flaticon.com/512/3076/3076345.png"
+      "url": "https://cdn-icons-png.flaticon.com/512/3076/3076345.png",
+      "description": "Excellent mouse",
+      "code": "AAA111",
+      "stock": 5
     },
     {
       "id": 2,
-      "name": "Teclado",
+      "timestamp_prod": 1666882868559,
+      "name": "Keyboard",
       "price": "500",
-      "url": "https://cdn-icons-png.flaticon.com/512/689/689392.png"
-    },
-    {
-      "id": 3,
-      "name": "Parlantes",
-      "price": "1200",
-      "url": "https://cdn-icons-png.flaticon.com/512/689/689392.png"
+      "url": "https://cdn-icons-png.flaticon.com/512/689/689392.png",
+      "description": "Excellent keyboard",
+      "code": "AAA222",
+      "stock": 2
     }
   ]
 }
