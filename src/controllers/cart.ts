@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
-import { Cart, Products } from "../services/services";
+import { Cart } from "../services/cart";
+import { Products } from "../services/products";
 
 export const getAllCarts = async (_req: Request, res: Response) => {
   try {
@@ -66,7 +67,7 @@ export const getProductsByCartId = async (req: Request, res: Response) => {
 export const addProductToCart = async (req: Request, res: Response) => {
   try {
     //busco producto que quiero agregar. utilizo servicios de product
-    const idProd = JSON.parse(req.body.id);
+    const idProd = JSON.parse(req.body.id_prod);
     const prod = await Products.getById(idProd);
     if (!prod) return res.status(400).send("Product not found");
     console.log(prod);

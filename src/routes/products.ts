@@ -5,7 +5,7 @@ import { verifyRole } from "../middlewares/role";
 const productsRouter = express.Router();
 
 //get all products
-productsRouter.get("/", verifyRole, getProducts);
+productsRouter.get("/", getProducts);
 
 //get product by id
 productsRouter.get("/:id", getProductById);
