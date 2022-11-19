@@ -1,5 +1,5 @@
 import express from "express";
-import { addProductToCart, createCart, deleteCartById, deleteProductByIdFromCart, getAllCarts, getCartById, getProductsByCartId } from "../controllers/cart";
+import { addProductToCart, createCart, deleteCartById, deleteProductByIdFromCart, getAllCarts, getCartById } from "../controllers/cart.controller";
 
 
 const cartRouter = express.Router();
@@ -17,7 +17,7 @@ cartRouter.post("/", createCart);
 cartRouter.delete("/:id", deleteCartById);
 
 //get product by cart id
-cartRouter.get("/:id/products", getProductsByCartId);
+//cartRouter.get("/:id/products", getProductsByCartId);
 
 //add product to cart
 cartRouter.post("/:id/products", addProductToCart);
